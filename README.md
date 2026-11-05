@@ -1,6 +1,6 @@
 <div align="center">
 
-# QuanLyPhongKham
+# ClinicFlow
 
 **Hệ thống Quản lý Phòng khám** — Clinic Management System
 
@@ -35,7 +35,7 @@ A full-stack clinic management system with role-based access control for Admins,
 
 ## Tech Stack
 
-### Backend — `QuanLyPhongKham.Server/`
+### Backend — `ClinicFlow.Server/`
 
 - **ASP.NET Core Web API** (.NET 8) — layered architecture: Controller → Service → Repository
 - **Entity Framework Core** (Code First) + **Pomelo MySQL** driver
@@ -45,7 +45,7 @@ A full-stack clinic management system with role-based access control for Admins,
 - **AutoMapper** — entity ↔ DTO mapping
 - **Swagger / OpenAPI** — auto-generated API docs (dev only)
 
-### Frontend — `QuanLyPhongKham.Client/`
+### Frontend — `ClinicFlow.Client/`
 
 - **React 19** + **Vite 8**
 - **Ant Design 6** — UI components
@@ -58,18 +58,18 @@ A full-stack clinic management system with role-based access control for Admins,
 ## Project Structure
 
 ```
-QuanLyPhongKham/
-├── QuanLyPhongKham.Server/
+ClinicFlow/
+├── ClinicFlow.Server/
 │   └── src/
-│       ├── QuanLyPhongKham.API/          # Entry point, controllers, DI config
-│       ├── QuanLyPhongKham.Services/     # Business logic
-│       ├── QuanLyPhongKham.Repositories/ # Data access
-│       ├── QuanLyPhongKham.Models/       # EF entities, DbContext, migrations
-│       ├── QuanLyPhongKham.DTOs/         # Request/response DTOs + AutoMapper
-│       ├── QuanLyPhongKham.Commons/      # Shared enums
+│       ├── ClinicFlow.API/          # Entry point, controllers, DI config
+│       ├── ClinicFlow.Services/     # Business logic
+│       ├── ClinicFlow.Repositories/ # Data access
+│       ├── ClinicFlow.Models/       # EF entities, DbContext, migrations
+│       ├── ClinicFlow.DTOs/         # Request/response DTOs + AutoMapper
+│       ├── ClinicFlow.Commons/      # Shared enums
 │       └── MayNghien.Infrastructures/    # Shared infrastructure library
 │
-└── QuanLyPhongKham.Client/
+└── ClinicFlow.Client/
     └── src/
         ├── apis/         # One module per domain entity
         ├── pages/        # Admin / Doctor / Receptionist / Patient / Auth
@@ -99,22 +99,22 @@ QuanLyPhongKham/
 #### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/QuanLyPhongKham.git
-cd QuanLyPhongKham
+git clone https://github.com/<your-username>/ClinicFlow.git
+cd ClinicFlow
 ```
 
 #### 2. Configure the backend
 
-Open `QuanLyPhongKham.Server/src/QuanLyPhongKham.API/appsettings.json` and fill in your values:
+Open `ClinicFlow.Server/src/ClinicFlow.API/appsettings.json` and fill in your values:
 
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Port=3306;Database=QuanLyPhongKham;User=root;Password=YOUR_PASSWORD;"
+    "DefaultConnection": "Server=localhost;Port=3306;Database=ClinicFlow;User=root;Password=YOUR_PASSWORD;"
   },
   "Jwt": {
-    "Issuer": "QuanLyPhongKham",
-    "Audience": "QuanLyPhongKham",
+    "Issuer": "ClinicFlow",
+    "Audience": "ClinicFlow",
     "Key": "YOUR_SECRET_KEY_MIN_32_CHARS",
     "AccessTokenExpiresIn": 3600,
     "RefreshTokenExpiresIn": 10080
@@ -125,21 +125,21 @@ Open `QuanLyPhongKham.Server/src/QuanLyPhongKham.API/appsettings.json` and fill 
 
 #### 3. Apply EF Core migrations
 
-Open **Package Manager Console** (Tools → NuGet → Package Manager Console), set the default project to `QuanLyPhongKham.API`, then run:
+Open **Package Manager Console** (Tools → NuGet → Package Manager Console), set the default project to `ClinicFlow.API`, then run:
 
 ```powershell
 Update-Database
 ```
 
-Or via CLI from `QuanLyPhongKham.Server/src/`:
+Or via CLI from `ClinicFlow.Server/src/`:
 
 ```bash
-dotnet ef database update --project QuanLyPhongKham.Models --startup-project QuanLyPhongKham.API
+dotnet ef database update --project ClinicFlow.Models --startup-project ClinicFlow.API
 ```
 
 #### 4. Run the backend
 
-Open `QuanLyPhongKham.Server/src/src.sln` in Visual Studio 2022, set `QuanLyPhongKham.API` as the startup project, and press **F5**.
+Open `ClinicFlow.Server/src/src.sln` in Visual Studio 2022, set `ClinicFlow.API` as the startup project, and press **F5**.
 
 The API starts at the port shown in `Properties/launchSettings.json`.
 Swagger UI is available at `/swagger` in Development mode.
@@ -147,7 +147,7 @@ Swagger UI is available at `/swagger` in Development mode.
 #### 5. Run the frontend
 
 ```bash
-cd QuanLyPhongKham.Client
+cd ClinicFlow.Client
 npm install
 npm run dev
 ```
@@ -161,8 +161,8 @@ The app opens at `http://localhost:5173`.
 #### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/QuanLyPhongKham.git
-cd QuanLyPhongKham
+git clone https://github.com/<your-username>/ClinicFlow.git
+cd ClinicFlow
 ```
 
 #### 2. Configure the backend
@@ -172,13 +172,13 @@ Same as [Step 2 above](#2-configure-the-backend) — edit `appsettings.json`.
 #### 3. Apply migrations & run the backend
 
 ```bash
-cd QuanLyPhongKham.Server/src
+cd ClinicFlow.Server/src
 
 # Apply migrations
-dotnet ef database update --project QuanLyPhongKham.Models --startup-project QuanLyPhongKham.API
+dotnet ef database update --project ClinicFlow.Models --startup-project ClinicFlow.API
 
 # Start the API
-cd QuanLyPhongKham.API
+cd ClinicFlow.API
 dotnet run
 ```
 
@@ -187,7 +187,7 @@ Recommended VS Code extensions: **C# Dev Kit**, **ESLint**, **Prettier**.
 #### 4. Run the frontend
 
 ```bash
-cd QuanLyPhongKham.Client
+cd ClinicFlow.Client
 npm install
 npm run dev
 ```
@@ -201,15 +201,15 @@ npm run dev
 #### Build and run the API image manually
 
 ```bash
-cd QuanLyPhongKham.Server/src/QuanLyPhongKham.API
+cd ClinicFlow.Server/src/ClinicFlow.API
 
-docker build -t quanlyphongkham-api .
+docker build -t clinicflow-api .
 
 docker run -d -p 8080:8080 \
-  -e ConnectionStrings__DefaultConnection="Server=host.docker.internal;Port=3306;Database=QuanLyPhongKham;User=root;Password=YOUR_PASSWORD;" \
+  -e ConnectionStrings__DefaultConnection="Server=host.docker.internal;Port=3306;Database=ClinicFlow;User=root;Password=YOUR_PASSWORD;" \
   -e Jwt__Key="YOUR_SECRET_KEY_MIN_32_CHARS" \
-  --name quanlyphongkham-api \
-  quanlyphongkham-api
+  --name clinicflow-api \
+  clinicflow-api
 ```
 
 The API is accessible at `http://localhost:8080`.
@@ -242,10 +242,10 @@ Full interactive docs available at `/swagger` when running in Development mode.
 
 | Variable | Description | Example |
 |---|---|---|
-| `ConnectionStrings__DefaultConnection` | MySQL connection string | `Server=...;Database=QuanLyPhongKham;...` |
+| `ConnectionStrings__DefaultConnection` | MySQL connection string | `Server=...;Database=ClinicFlow;...` |
 | `Jwt__Key` | JWT signing key (min 32 chars) | `super-secret-key-...` |
-| `Jwt__Issuer` | JWT issuer | `QuanLyPhongKham` |
-| `Jwt__Audience` | JWT audience | `QuanLyPhongKham` |
+| `Jwt__Issuer` | JWT issuer | `ClinicFlow` |
+| `Jwt__Audience` | JWT audience | `ClinicFlow` |
 | `Jwt__AccessTokenExpiresIn` | Access token lifetime (seconds) | `3600` |
 | `Jwt__RefreshTokenExpiresIn` | Refresh token lifetime (minutes) | `10080` |
 | `AllowedOrigins__0` | CORS allowed origin | `http://localhost:5173` |

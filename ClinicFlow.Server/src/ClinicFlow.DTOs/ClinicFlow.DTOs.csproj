@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MayNghien.Infrastructures\MayNghien.Infrastructures.csproj" />
+    <ProjectReference Include="..\ClinicFlow.Commons\ClinicFlow.Commons.csproj" />
+    <ProjectReference Include="..\ClinicFlow.Models\ClinicFlow.Models.csproj" />
+  </ItemGroup>
+
+</Project>
